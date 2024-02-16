@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #070707;
+}
+
+.logo img {
+    width: 200px; /* Adjust this value to resize the logo */
+    height: auto; /* Maintains the aspect ratio */
+    border-radius: 4px;
+}
+
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  background-image: url(assets/background-image.png); 
+  background-size: contain; 
+  background-repeat: no-repeat; 
+  border-radius: 40px; 
+  background-position: center; 
+  background-color: #070707;
+}
+
+/* Tablet devices (overwrites for screens smaller than or equal to 768px width) */
+@media (max-width: 768px) {
+    section {
+      background-image: url(assets/tablet.png); /* Specific background image for tablets */
+    }
+  }
+  
+  /* Mobile devices (overwrites for screens smaller than or equal to 480px width) */
+  @media (max-width: 480px) {
+    section {
+      background-image: url(assets/mobile.png); /* Specific background image for mobile devices */
+    }
+  }
+
+ .container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.container .spinBtn {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    /* background: linear-gradient(to right, #ffd700, #f8b500, #f0ad00, #e6a400, #d89e00); */
+    background: linear-gradient(to right, #D12631, #de1f2c, #ed1624, #ed0918, #ff0011);
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    border: 4px solid rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    user-select: none;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 24px;
+}
+
+
+
+.container .spinBtn::before {
+    content: '';
+    position: absolute;
+    top: -28px;
+    width: 30px;
+    height: 30px;
+    /* background: linear-gradient(to right, #ffd700, #f8b500, #f0ad00, #e6a400, #d89e00); */
+    background-color: #CCFF00;
+    clip-path: polygon(50% 0%, 15% 100%, 85% 100%);
+}
+
+
+.container .wheel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 5px #e9d193,
+                0 0 0 15px #303030,
+                0 0 0 18px #d4b962;  
+    transition: transform 5s ease-in-out;
+}
+
+
+
+
+.container .wheel .number {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: var(--clr);
+    transform-origin: bottom right;
+    transform: rotate(calc(45deg * var(--i)));
+    clip-path: polygon(0 0, 56% 0, 100% 100%, 0 56%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+
+.container .wheel .number span {
+    position: relative;
+    transform: rotate(-45deg);
+    font-size: 2em;
+    font-weight: 600;
+    color: #e9d193;
+    text-shadow: 4px 6px 3px rgba(0, 0, 0, 0.2);
+}
+
+.container .wheel .number span {
+    font-size: 1em; /* Adjust based on the available space */
+    text-align: center;
+    word-wrap: break-word;
+    padding: 0 10px; /* Adds padding inside the number blocks */
+}
+
+
+.container .wheel .number span::after {
+    content: '';
+    position: absolute;
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+button {
+    background: none; /* Removes the default background */
+    color: inherit; /* Sets the button text color to the color of its parent */
+    border: none; /* Removes the default border */
+    padding: 0; /* Removes the default padding */
+    margin: 0; /* Removes the default margin */
+    font: inherit; /* Inherits the font from its parent */
+    cursor: pointer; /* Keeps the cursor as pointer to signify it's clickable */
+    outline: inherit; /* Removes the default focus outline and inherits from the parent, can set to none if desired */
+}
+
+
+
+
+
+/* TIMER SECTION */
+.timer-section {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.timer-holder {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+}
+
+.image-container {
+    background: linear-gradient(135deg,#e9d193,#d4b962);
+    color: #07213a;
+    text-align: center;
+    font-size: 30px; /* Adjust as needed */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    margin: 10px;
+    flex-grow: 1; /* Equal width */
+}
+
+/* TITLE SECTION */
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Adjust height as needed */
+}
+
+.title .container-title {
+    border-radius: 50px;
+    background-color: rgb(12, 12, 13);
+    border: 1px solid #e9d193;
+}
+
+.title .container span {
+    color: #FBC757;
+}
+
+.circle-text {
+    font-size: 32px; /* Adjust font size as needed */
+    font-weight: bold;
+    color: #f1f1f1; /* Change color as desired */
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .circle-text {
+        font-size: 20px; /* Smaller font size for tablet devices */
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .circle-text {
+        font-size: 18px; /* Even smaller font size for mobile devices */
+        padding: 10px;
+    }
+    .title .container-title {
+        border-radius: 20px; /* Slightly reduce border-radius for smaller screens */
+        margin: 0 5px; /* Reduce margin for very small screens */
+    }
+}
+
+
+/* SVG SECTION */
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows SVG items to wrap in smaller screens */
+    gap: 10px; /* Adds space between the SVGs */
+    margin-top: 40px; /* Space between the wheel and the SVGs */
+    padding: 20px 0;
+}
+
+.svg-item img {
+    width: 132px; /* Adjust based on your SVG size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+
+/* COIN */
+#gimmick {
+    display:block;
+    pointer-events:none;
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+
+/* FOOTER AND MODAL */
+.site-footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+  }
+  
+  .container-footer {
+    max-width: 1170px;
+    margin: auto;
+    padding: 0 15px;
+  }
+
+  .gold-link {
+    color: #ffc700; /* Gold color for the link */
+    text-decoration: none; /* Removes the default underline */
+  }
+
+  .footer-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between images */
+    margin: 40px 0; /* Space above and below the images row */
+  }
+  
+  .footer-images img {
+    width: auto;
+    height: 32px; /* Adjust based on your images' aspect ratio and desired size */
+    max-width: 100%; /* Ensures images are responsive and fit within their container */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .footer-images {
+      flex-direction: column; /* Stack images vertically on smaller screens */
+      gap: 5px; /* Reduce gap for a tighter layout on small screens */
+    }
+  }
+
+  .container-footer h3 {
+    color: #fff; /* White color for the heading */
+    font-size: 1.5rem; /* Larger font size for the heading */
+    margin-bottom: 16px; /* Spacing below the heading */
+  }
+
+  .container-footer p {
+    margin: 10px 0;
+    padding: 0;
+  }
+
+  #terms {
+    color: #6d6d6d; /* Gray color for the link */
+    display: block; /* Make the link block to take its own line */
+    margin-top: 15px; /* Vertical space between the paragraph and the link */
+    text-decoration: none; /* Optional: Removes underline from the link */
+  }
+  
+  #terms:hover {
+    text-decoration: underline; /* Optional: Adds underline on hover for better UX */
+  }
+
+  
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    z-index: 99;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modal-content h2 {
+    color: #333; /* Dark color for heading */
+    font-size: 1.5rem; /* Slightly larger font size for heading */
+    margin-bottom: 16px; /* Spacing below the heading */
+  }
+  
+  .modal-content ol {
+    padding-left: 20px; /* Indentation for the ordered list */
+    margin-top: 10px; /* Spacing above the list */
+  }
+  
+  .modal-content ol li {
+    font-size: 1rem; /* Font size for list items */
+    line-height: 1.5; /* Line height for readability */
+    margin-bottom: 8px; /* Spacing between list items */
+    color: #555; /* Subdued text color for readability */
+  }
+  
+  .modal-content ol li a {
+    color: #ffc700; /* Color for links within the list */
+    text-decoration: underline; /* Underline links for clarity */
+  }
+  
+  .modal-content ol li a:hover {
+    color: #0056b3; /* Darker shade for link hover state */
+  }
+  
+  
+
+
+
+
+
+
+
+  /* Second Modal Styling */
+.modal-content2 {
+    background-color: #050505;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #d4b962;
+    width: 60%; /* Adjust based on your preference */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    position: relative;
+    text-align: center; /* Center align the content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Centers the text elements like <h2> and <p> */
+    padding: 20px; /* Add padding as needed */
+  }
+  
+  .modal-content2 h2 {
+    color: #d4b962; /* Brand color for heading */
+    margin-bottom: 20px;
+  }
+  
+  .modal-content2 p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #e5e5e5;
+  }
+  
+  .modal-content2 .cta-button {
+    background-color: #ffd700; /* Gold color to match the brand */
+    color: #070707;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-content2 .cta-button:hover {
+    background-color: #e6a400; /* Darker shade for hover effect */
+  }
+
+  .close {
+    align-self: flex-end; /* Positions the close button to the right */
+}
+  
+  /* TIME SENSITIVE OFFER */
+  .time-sensitive-offer {
+    display: none; /* Hidden by default */
+    text-align: center; /* Center the text */
+    margin: 40px 0; /* Add some margin for spacing */
+    padding: 15px; /* Padding for better spacing inside the div */
+    background: linear-gradient(135deg,#e9d193,#d4b962); /* Catchy background color, consider matching with the site's theme */
+    color: #070707; /* Text color, ensure good contrast for readability */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Optional: Adds a subtle shadow for depth */
+  }
+  
+  /* Show the div only for tablets and mobiles */
+  @media (max-width: 768px) {
+    .time-sensitive-offer {
+      display: block; /* Make it visible */
+    }
+  }
+  
+  /* Optionally, adjust the styling further for mobile devices if needed */
+  @media (max-width: 480px) {
+    .time-sensitive-offer h2 {
+      font-size: 18px; /* Smaller font size for mobile devices for better fit */
+    }
+  }
+
+
+
+
+
+  /* RESPONSIVE TEST */
+
+/* Adjustments for the wheel container and button for tablets */
+@media (max-width: 768px) {
+  .container {
+    width: 400px; 
+    height: 400px;
+  }
+  
+}
+
+/* Adjustments for mobile devices */
+@media (max-width: 480px) {
+  .container {
+    width: 350px; 
+    height: 350px;
+  }
+  .container .spinBtn {
+    width: 70px; 
+    height: 70px;
+    font-size: 20px; 
+  }
+  .container .wheel .number span {
+    font-size: 1em; 
+  }
+  
+}
+  
+
+
+
+
+
+
